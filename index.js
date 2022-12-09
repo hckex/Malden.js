@@ -44,7 +44,7 @@ app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
       });
     }
 
-    if(interaction.data.name == '일해라' && interaction.member.user.id == '352418103432445975'){
+    if(interaction.data.name == '일해라'){
       if(interaction.member.user.id == '352418103432445975'){
         return res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
