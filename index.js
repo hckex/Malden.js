@@ -51,7 +51,7 @@ app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
           data: {
             content: `네 주인님`,
           },
-        });
+        })
       }else{
         return res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
