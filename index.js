@@ -32,15 +32,32 @@ const discord_api = axios.create({
 app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
   const interaction = req.body;
 
-  if (interaction.type === InteractionType.APPLICATION_COMMAND) {
-    console.log(interaction.data.name)
-    if(interaction.data.name == 'yo'){
+    if(interaction.data.name == '말덴'){
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          content: `Yo ${interaction.member.user.username}!`,
+          content: `조아`,
         },
       });
+    }
+
+    if(interaction.data.name == '일해라' && interaction.member.user.id == '352418103432445975'){
+      if(interaction.member.user.id == '352418103432445975'){
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: `네 주인님`,
+          },
+        });
+      }else{
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: `2022년 최저 시급은 9,160원입니다.`,
+          },
+        });
+      }
+      
     }
 
     if(interaction.data.name == 'dm'){
@@ -75,13 +92,13 @@ app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
 app.get('/register_commands', async (req,res) =>{
   let slash_commands = [
     {
-      "name": "yo",
-      "description": "replies with Yo!",
+      "name": "말덴",
+      "description": "말덴이를 불러보아요",
       "options": []
     },
     {
-      "name": "dm",
-      "description": "sends user a DM",
+      "name": "일해라",
+      "description": "올해의 최저시급은 얼마?",
       "options": []
     }
   ]
@@ -103,7 +120,7 @@ app.get('/register_commands', async (req,res) =>{
 
 
 app.get('/', async (req,res) =>{
-  return res.send('Follow documentation ')
+  return res.send('Malden is here!')
 })
 
 
